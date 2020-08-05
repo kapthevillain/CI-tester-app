@@ -1,0 +1,13 @@
+FROM kapthevillain/base-images:miniconda3
+
+COPY environment.yml /app/environment.yml
+WORKDIR /app/
+RUN conda env create -f environment.yml && conda clean -a -y 
+ENV PATH /opt/conda/envs/wksp-prototype/bin:$PATH
+RUN /bin/bash -c "source activate /opt/conda/envs/wksp-prototype"
+
+COPY  app.py config/.config-dev bin/start-dev.sh ./
+
+ENV FLASK_PORT=505
+
+ENTRYPOINT [ "/bin/bash", "./start-dev.sh" ]
