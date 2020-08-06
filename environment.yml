@@ -1,0 +1,9 @@
+name: wksp-prototype
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8
+  - flask=1.1.2
+  - pylint=2.5.3
+  - pytest=5.4.3
